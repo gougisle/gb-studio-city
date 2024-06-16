@@ -1,0 +1,29 @@
+$gracie-red: #e53935;
+$gracieBlue: #317dc3;
+$dark-grey: #212121;
+$white: #fafafa;
+
+.footer-link {
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  transition: 300ms all;
+  &:hover {
+    color: $dark-grey;
+    transform: translateY(-3px);
+  }
+  a {
+    &:visited {
+      color: inherit;
+    }
+  }
+}
+
+.navbar-link-button {
+  color: white;
+  margin-right: 15px;
+  transition: 300ms all;
+  &:hover {
+    color: $dark-grey;
+  }
+}

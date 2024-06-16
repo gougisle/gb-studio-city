@@ -1,0 +1,10 @@
+$gracieBlueFaded: #317cc32f;
+
+.team-card {
+  transition: 300ms all;
+
+  &:hover {
+    transform: scale(1.07);
+    background-color: $gracieBlueFaded;
+  }
+}
