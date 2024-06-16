@@ -1,13 +1,14 @@
 import React from "react";
 import Layout from "../components/layout";
-import { Box, Typography, Button, Grid } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import landingImage from "../images/pexels-rdne-8612017.jpg";
 import aboutImage from "../images/pexels-rdne-7045743.jpg";
 import guyKickingImage from "../images/pexels-pixabay-260447.jpg";
 import { navigate } from "gatsby";
-import "../styles/indexstyles.scss";
-import { lightGrey } from "../utils/siteThemeColors";
 
 const IndexPage = () => {
   return (
@@ -15,44 +16,38 @@ const IndexPage = () => {
       <Layout>
         <Box
           sx={{
-            backgroundColor: lightGrey,
-            backgroundImage: { xs: "none", lg: `url(${landingImage})` },
-
-            backgroundRepeat: "no-repeat",
+            background: `url(${landingImage})`,
             backgroundSize: "100%",
+            backgroundAttachment: "fixed",
+            backgroundRepeat: "no-repeat",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 10,
+            color: "white",
             height: "100vh",
+            paddingX: { xs: 3, md: 15 },
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 10,
-              color: "white",
-              height: "100%",
-              paddingX: { xs: 3, md: 15 },
-            }}
+          <Typography variant="h2" fontWeight={"bold"}>
+            Welcome to Gracie Barra Studio City
+          </Typography>
+          <Button
+            variant="contained"
+            color="error"
+            sx={{ paddingY: 2, paddingX: 5, fontSize: "larger" }}
           >
-            <Typography variant="h2" fontWeight={"bold"}>
-              Welcome to Gracie Barra Studio City
-            </Typography>
-            <Button
-              variant="contained"
-              color="error"
-              sx={{ paddingY: 2, paddingX: 5, fontSize: "larger" }}
-            >
-              {" "}
-              Sign Up for a free Class
-            </Button>
-            <Typography variant="h5" textAlign={"center"}>
-              Empowering minds, bodies, and spirits in Studio City through the
-              Jiu Jitsu, Muay Thai and Fitness. Join us to discover discipline,
-              confidence, and community in every training session.
-            </Typography>
-          </Box>
+            {" "}
+            Sign Up for a free Class
+          </Button>
+          <Typography variant="h5" textAlign={"center"}>
+            Empowering minds, bodies, and spirits in Studio City through the Jiu
+            Jitsu, Muay Thai and Fitness. Join us to discover discipline,
+            confidence, and community in every training session.
+          </Typography>
         </Box>
+
         {/* SCHEDULE SECTION */}
         <Box
           sx={{

@@ -1,15 +1,20 @@
 import React from "react";
 import Layout from "../components/layout";
-import { Box, Typography, TextField, Button, FormControl } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import FormControl from "@mui/material/FormControl";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormLabel from "@mui/material/FormLabel";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import SectionTitle from "../components/sectionTitle";
 import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
 import AlternateEmailRoundedIcon from "@mui/icons-material/AlternateEmailRounded";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import SectionTitle from "../components/sectionTitle";
 import { gracieRed } from "../utils/siteThemeColors";
+import { publicInfo } from "../utils/publicContent";
 
 const Contact = () => {
   return (
@@ -61,7 +66,7 @@ const Contact = () => {
             >
               <LocalPhoneRoundedIcon />
               <Typography variant="h6" display={"inline"} color={gracieRed}>
-                <i>(111) 222-3333</i>
+                <i>{publicInfo.phone}</i>
               </Typography>
             </Box>
             <Box
@@ -75,7 +80,7 @@ const Contact = () => {
               {" "}
               <AlternateEmailRoundedIcon />
               <Typography variant="h6" display={"inline"} color={gracieRed}>
-                <i>info@gbstudiocity.com</i>
+                <i>{publicInfo.email}</i>
               </Typography>
             </Box>{" "}
             <Box
@@ -89,7 +94,7 @@ const Contact = () => {
               {" "}
               <HomeRoundedIcon />
               <Typography variant="h6" display={"inline"} color={gracieRed}>
-                <i>12323 Ventura Blvd, Studio City, CA 91604</i>
+                <i>{publicInfo.address}</i>
               </Typography>
             </Box>
           </Box>

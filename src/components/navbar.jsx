@@ -13,6 +13,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { navigate } from "gatsby";
+import { darkGrey } from "../utils/siteThemeColors";
 
 const NavBar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -29,6 +30,13 @@ const NavBar = () => {
 
   const navToHome = () => {
     navigate("/");
+  };
+
+  const navButtonLinkStyle = {
+    color: "white",
+    marginRight: "15px",
+    transition: "300ms all",
+    "&:hover": { color: darkGrey },
   };
 
   const drawer = (
@@ -93,8 +101,9 @@ const NavBar = () => {
               {navItems.map((item) => (
                 <Button
                   key={item}
-                  className="navbar-link-button"
+                  //className="navbar-link-button"
                   onClick={() => navToPage(item)}
+                  sx={navButtonLinkStyle}
                 >
                   {item}
                 </Button>

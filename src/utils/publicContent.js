@@ -24,4 +24,10 @@ const teamMembers = [
   },
 ];
 
-export { teamMembers };
+const publicInfo = {
+  email: "info@gbstudiocity.com",
+  phone: "(111) 222-3333",
+  address: "12323 Ventura Blvd, Studio City, CA 91604",
+};
+
+export { teamMembers, publicInfo };

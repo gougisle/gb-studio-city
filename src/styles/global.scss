@@ -1,5 +1,6 @@
 $gracie-red: #e53935;
 $gracieBlue: #317dc3;
+$gracieBlueFaded: #317cc32f;
 $dark-grey: #212121;
 $white: #fafafa;
 
@@ -16,14 +17,5 @@ $white: #fafafa;
     &:visited {
       color: inherit;
     }
-  }
-}
-
-.navbar-link-button {
-  color: white;
-  margin-right: 15px;
-  transition: 300ms all;
-  &:hover {
-    color: $dark-grey;
   }
 }

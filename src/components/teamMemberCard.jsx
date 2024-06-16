@@ -2,14 +2,22 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { lightGrey, offWhite, gracieRed } from "../utils/siteThemeColors";
+import {
+  lightGrey,
+  gracieRed,
+  gracieBlueFaded,
+} from "../utils/siteThemeColors";
 import "../styles/teammembercard.scss";
 
-const teamMemberImageStyle = { width: 250, height: 250, borderRadius: 5 };
+const teamMemberImageSX = { width: 250, height: 250, borderRadius: 5 };
+const teamCardSX = {
+  transition: "300ms all",
+  "&:hover": { transform: "scale(1.07)", backgroundColor: gracieBlueFaded },
+};
 
 const TeamMemberCard = ({ name, role, description, image }) => {
   return (
-    <Paper elevation={3} className="team-card ">
+    <Paper elevation={3} className="team-cad " sx={teamCardSX}>
       <Box
         sx={{
           display: "flex",
@@ -21,7 +29,7 @@ const TeamMemberCard = ({ name, role, description, image }) => {
       >
         <Box>
           <img
-            style={teamMemberImageStyle}
+            style={teamMemberImageSX}
             alt="Headshot of Gracie Barra Studio City teacher"
             src={image}
           />
