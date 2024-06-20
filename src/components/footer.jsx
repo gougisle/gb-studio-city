@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography, Container } from "@mui/material";
 import FooterTitle from "./footerTitle";
 import logo from "../images/icon.png";
-import { gracieBlue, gracieRed } from "../utils/siteThemeColors";
+import { gracieBlue } from "../utils/siteThemeColors";
 import { publicInfo } from "../utils/publicContent";
 
 const Footer = () => {

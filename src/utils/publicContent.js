@@ -2,24 +2,11 @@ import ShahyanImage from "../images/stock_bjj_teacher_headshot.png";
 
 const teamMembers = [
   {
-    name: "Shahyan Dalal",
-    role: "Owner / Manager",
-    description:
-      "Mattis nunc sed blandit libero. In arcu cursus euismod quis viverra nibh. Neque egestas congue quisque egestas diam in arcu cursus euismod. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere lorem. Ac turpis egestas sed tempus urna. Rutrum quisque non tellus orci ac auctor. Blandit libero volutpat sed cras ornare arcu dui vivamus. Diam maecenas ultricies mi eget mauris pharetra et ultrices. Tincidunt lobortis feugiat vivamus at augue eget. Fames ac turpis egestas sed tempus urna. Pellentesque habitant morbi tristique senectus et netus et. Vel facilisis volutpat est velit egestas. Libero enim sed faucibus turpis in eu mi bibendum. Phasellus vestibulum lorem sed risus ultricies.",
-    image: ShahyanImage,
-  },
-  {
-    name: "Lefeba Gougis",
-    role: "Web Wizard",
-    description:
-      "Mattis nunc sed blandit libero. In arcu cursus euismod quis viverra nibh. Neque egestas congue quisque egestas diam in arcu cursus euismod. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere lorem. Ac turpis egestas sed tempus urna. Rutrum quisque non tellus orci ac auctor. Blandit libero volutpat sed cras ornare arcu dui vivamus. Diam maecenas ultricies mi eget mauris pharetra et ultrices. Tincidunt lobortis feugiat vivamus at augue eget. Fames ac turpis egestas sed tempus urna. Pellentesque habitant morbi tristique senectus et netus et. Vel facilisis volutpat est velit egestas. Libero enim sed faucibus turpis in eu mi bibendum. Phasellus vestibulum lorem sed risus ultricies.",
-    image: ShahyanImage,
-  },
-  {
-    name: "Joe Rogan",
+    name: "Fabio Trindade",
     role: "Head Instructor",
     description:
-      "Mattis nunc sed blandit libero. In arcu cursus euismod quis viverra nibh. Neque egestas congue quisque egestas diam in arcu cursus euismod. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere lorem. Ac turpis egestas sed tempus urna. Rutrum quisque non tellus orci ac auctor. Blandit libero volutpat sed cras ornare arcu dui vivamus. Diam maecenas ultricies mi eget mauris pharetra et ultrices. Tincidunt lobortis feugiat vivamus at augue eget. Fames ac turpis egestas sed tempus urna. Pellentesque habitant morbi tristique senectus et netus et. Vel facilisis volutpat est velit egestas. Libero enim sed faucibus turpis in eu mi bibendum. Phasellus vestibulum lorem sed risus ultricies.",
+      "Fabio Trindade, born in Manaus, Amazonas, Brazil, is a highly accomplished Brazilian Jiu-Jitsu practitioner and instructor. With an impressive track record spanning over 27 years, Fabio has left an indelible mark on the BJJ community. \n Fabio began his BJJ journey at Monteiro Jiu-Jitsu, where he trained diligently from white belt to black belt. His esteemed professors include the Monteiro Brothers—Fábio, Guto, Yano, and Lucio. Throughout his career, Fabio has secured numerous championship titles, including being a 7-time Jiu-Jitsu State Champion in Amazonas, Brazil, a 3-time Brazil National Champion, a South American Champion, 3-time World Champion, and 2-time American Champion. He has also excelled in Nogi Jiu-Jitsu, winning the state championship three times.",
+
     image: ShahyanImage,
   },
 ];
