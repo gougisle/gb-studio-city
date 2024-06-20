@@ -7,7 +7,6 @@ import Grid from "@mui/material/Grid";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import landingImage from "../images/pexels-rdne-8612017.jpg";
 import aboutImage from "../images/pexels-rdne-7045743.jpg";
-import guyKickingImage from "../images/pexels-pixabay-260447.jpg";
 import fabioTeachingPhoto from "../images/fabio-teaching-1.jpeg";
 import { navigate } from "gatsby";
 
@@ -25,7 +24,7 @@ const IndexPage = () => {
       <Layout>
         <Box
           sx={{
-            backgroundImage: `url(${landingImage})`,
+            backgroundImage: { xs: "none", md: `url(${landingImage})` },
             backgroundColor: "black",
             backgroundSize: "cover",
             backgroundAttachment: "fixed",
@@ -41,11 +40,11 @@ const IndexPage = () => {
               alignItems: "center",
               gap: 10,
               color: "white",
-              height: "80vh",
+              height: "100vh",
               paddingX: { xs: 3, md: 15 },
             }}
           >
-            <Typography variant="h2" fontWeight={"bold"}>
+            <Typography variant="h2" fontWeight={"bold"} textAlign={"center"}>
               Welcome to Gracie Barra Studio City
             </Typography>
             <Button
