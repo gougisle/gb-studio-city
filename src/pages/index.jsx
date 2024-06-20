@@ -24,7 +24,7 @@ const IndexPage = () => {
       <Layout>
         <Box
           sx={{
-            backgroundImage: { xs: "none", md: `url(${landingImage})` },
+            backgroundImage: `url(${landingImage})`,
             backgroundColor: "black",
             backgroundSize: "cover",
             backgroundAttachment: "fixed",
