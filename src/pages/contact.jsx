@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../components/layout";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -13,10 +13,55 @@ import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
 import AlternateEmailRoundedIcon from "@mui/icons-material/AlternateEmailRounded";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import SectionTitle from "../components/sectionTitle";
-import { gracieRed } from "../utils/siteThemeColors";
 import { publicInfo } from "../utils/publicContent";
+// import { Alert } from "@mui/material";
 
 const Contact = () => {
+  const [formValues, setFormValues] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+    class: "adult",
+  });
+
+  //const [alert, setAlert] = useState("");
+
+  const handleFormValueChange = (e) => {
+    console.log(e.target.name);
+    const input = e.target.value;
+    const inputName = e.target.name;
+
+    setFormValues((prev) => {
+      let newState = { ...prev };
+      newState[inputName] = input;
+      return newState;
+    });
+  };
+
+  const sendFormValues = (e) => {
+    e.preventDefault();
+    console.log();
+    let url = process.env.REACT_APP_SHEETY_API_URI;
+    let body = {
+      sheet1: {
+        ...formValues,
+      },
+    };
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        // Do something with object
+        console.log(json.signUp);
+      });
+  };
+
+  //const onAlertChange = () => {};
+
   return (
     <Layout>
       <Box mb={5} mx={{ xs: 3, md: 15 }}>
@@ -37,6 +82,7 @@ const Contact = () => {
             sx={{ boxShadow: 5 }}
           >
             <iframe
+              title="Gracie Barra Studio City Address"
               width="100%"
               height="400"
               frameborder="0"
@@ -65,7 +111,11 @@ const Contact = () => {
               }}
             >
               <LocalPhoneRoundedIcon />
-              <Typography variant="h6" display={"inline"} color={gracieRed}>
+              <Typography
+                variant="h6"
+                display={"inline"}
+                className="contact-link"
+              >
                 <i>{publicInfo.phone}</i>
               </Typography>
             </Box>
@@ -79,7 +129,11 @@ const Contact = () => {
             >
               {" "}
               <AlternateEmailRoundedIcon />
-              <Typography variant="h6" display={"inline"} color={gracieRed}>
+              <Typography
+                variant="h6"
+                display={"inline"}
+                className="contact-link"
+              >
                 <i>{publicInfo.email}</i>
               </Typography>
             </Box>{" "}
@@ -93,17 +147,28 @@ const Contact = () => {
             >
               {" "}
               <HomeRoundedIcon />
-              <Typography variant="h6" display={"inline"} color={gracieRed}>
-                <i>{publicInfo.address}</i>
+              <Typography
+                variant="h6"
+                display={"inline"}
+                className="contact-link"
+              >
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href={publicInfo.googleMapsUrl}
+                >
+                  <i>{publicInfo.address}</i>
+                </a>
               </Typography>
             </Box>
           </Box>
         </Box>
 
         {/* CONTACT FORM */}
-
+        {/* <Alert severity="success">This is a success Alert.</Alert> */}
         <SectionTitle title="Connect With Us" />
         <Box
+          onSubmit={sendFormValues}
           component={"form"}
           sx={{
             display: "flex",
@@ -114,20 +179,26 @@ const Contact = () => {
         >
           <FormControl>
             <TextField
+              required
               id="name"
               name="name"
               variant="outlined"
               label="Name"
               size="normal"
+              value={formValues.name}
+              onChange={handleFormValueChange}
             />
           </FormControl>
           <FormControl>
             {" "}
             <TextField
+              required
               id="email"
               name="email"
               variant="outlined"
               label="Email"
+              value={formValues.email}
+              onChange={handleFormValueChange}
             />
           </FormControl>
           <FormControl>
@@ -137,31 +208,38 @@ const Contact = () => {
               name="phone"
               variant="outlined"
               label="Phone"
+              value={formValues.phone}
+              onChange={handleFormValueChange}
             />
           </FormControl>
           <FormControl>
             <TextField
+              multiline
+              rows={4}
               id="message"
               name="message"
               variant="outlined"
               label="Message"
+              value={formValues.message}
+              onChange={handleFormValueChange}
             />
           </FormControl>
-          <FormControl>
-            <FormLabel id="demo-radio-buttons-group-label">
+          <FormControl onChange={handleFormValueChange}>
+            <FormLabel id="radio-buttons-group-label">
               What class are you interested in?
             </FormLabel>
             <RadioGroup
-              aria-labelledby="demo-radio-buttons-group-label"
+              aria-labelledby="radio-buttons-group-label"
               defaultValue="adult"
-              name="radio-buttons-group"
+              name="class"
               row
             >
               {" "}
               <FormControlLabel
-                value="adult"
+                defaultChecked
+                value="adults"
                 control={<Radio />}
-                label="Adult"
+                label="Adults"
               />
               <FormControlLabel
                 value="children"
@@ -171,12 +249,12 @@ const Contact = () => {
               <FormControlLabel
                 value="women"
                 control={<Radio />}
-                label="Women's"
+                label="Women"
               />
             </RadioGroup>
           </FormControl>
 
-          <Button variant="contained" color="error">
+          <Button type="submit" variant="contained" color="error">
             Send Message
           </Button>
         </Box>

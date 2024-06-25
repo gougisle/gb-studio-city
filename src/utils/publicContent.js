@@ -13,8 +13,10 @@ const teamMembers = [
 
 const publicInfo = {
   email: "info@gbstudiocity.com",
-  phone: "(111) 222-3333",
+  phone: "(818) 867-8913",
   address: "12323 Ventura Blvd, Studio City, CA 91604",
+  googleMapsUrl:
+    "https://www.google.com/maps/place/12323+Ventura+Blvd,+Studio+City,+CA+91604/@34.1432169,-118.4017235,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2bdfafdfeab6f:0x51a977c6556326e3!8m2!3d34.1432169!4d-118.4017235!16s%2Fg%2F11c3q44k6l?entry=ttu",
 };
 
 export { teamMembers, publicInfo };

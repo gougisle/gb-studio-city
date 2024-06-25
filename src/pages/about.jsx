@@ -7,9 +7,6 @@ import { Typography } from "@mui/material";
 import fabioPhoto from "../images/fabio-blue-gi-medals.jpg";
 import { gracieRed } from "../utils/siteThemeColors";
 
-// import TeamMemberCard from "../components/teamMemberCard";
-// import { teamMembers } from "../utils/publicContent";
-
 const imageStyles = {
   width: "100%",
   boxShadow: "5px 5px 5px grey",
