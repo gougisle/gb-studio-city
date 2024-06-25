@@ -42,12 +42,14 @@ const Contact = () => {
   const sendFormValues = async (e) => {
     e.preventDefault();
 
+    const url =
+      "https://api.sheety.co/cbd54dcc65404cab9c3e60d3c4772f07/gracieLeads/sheet1";
     let body = {
       sheet1: {
         ...formValues,
       },
     };
-    await fetch(process.env.REACT_APP_SHEETY_API_URI, {
+    await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
