@@ -4,18 +4,29 @@ $gracieBlueFaded: #317cc32f;
 $dark-grey: #212121;
 $white: #fafafa;
 
-.footer-link {
+a {
   cursor: pointer;
   text-decoration: none;
+  &:visited {
+    color: inherit;
+  }
+}
+
+.contact-link {
+  cursor: pointer;
+  color: $gracie-red;
+  transition: 300ms all;
+  &:hover {
+    color: $gracieBlue;
+    //transform: translateY(-3px);
+  }
+}
+
+.footer-link {
   color: white;
   transition: 300ms all;
   &:hover {
     color: $dark-grey;
     transform: translateY(-3px);
-  }
-  a {
-    &:visited {
-      color: inherit;
-    }
   }
 }

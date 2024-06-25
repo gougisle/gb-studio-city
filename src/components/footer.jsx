@@ -40,12 +40,8 @@ const Footer = () => {
         <Box>
           <FooterTitle title={"LOCATION"} />
           <p>
-            <Typography variant="body1" className="footer-link">
-              <a
-                style={{ textDecoration: "none" }}
-                target="_blank"
-                href="https://www.google.com/maps/place/12323+Ventura+Blvd,+Studio+City,+CA+91604/@34.1432169,-118.4042984,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2bdfafdfeab6f:0x51a977c6556326e3!8m2!3d34.1432169!4d-118.4017235!16s%2Fg%2F11c3q44k6l?entry=ttu"
-              >
+            <Typography variant="body1" className="link-plain footer-link">
+              <a target="_blank" href={publicInfo.googleMapsUrl}>
                 <i>{publicInfo.address}</i>
               </a>
             </Typography>
