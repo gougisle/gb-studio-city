@@ -41,7 +41,11 @@ const Footer = () => {
           <FooterTitle title={"LOCATION"} />
           <p>
             <Typography variant="body1" className="link-plain footer-link">
-              <a target="_blank" href={publicInfo.googleMapsUrl}>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={publicInfo.googleMapsUrl}
+              >
                 <i>{publicInfo.address}</i>
               </a>
             </Typography>

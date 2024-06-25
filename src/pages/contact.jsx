@@ -39,16 +39,15 @@ const Contact = () => {
     });
   };
 
-  const sendFormValues = (e) => {
+  const sendFormValues = async (e) => {
     e.preventDefault();
-    console.log();
-    let url = process.env.REACT_APP_SHEETY_API_URI;
+
     let body = {
       sheet1: {
         ...formValues,
       },
     };
-    fetch(url, {
+    await fetch(process.env.REACT_APP_SHEETY_API_URI, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),

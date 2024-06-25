@@ -77,7 +77,7 @@ const IndexPage = () => {
           }}
         >
           <Typography variant="h4" fontWeight={"bold"}>
-            <i> Schedule</i>
+            Schedule
           </Typography>
           <Typography variant="body1" textAlign={"center"}>
             Gracie Barra welcomes anyone who values <b>discipline</b>,{" "}
@@ -106,6 +106,7 @@ const IndexPage = () => {
               display={{ xs: "none", md: "block" }}
             >
               <img
+                alt="Jiu-Jitsu Student"
                 src={aboutImage}
                 style={{
                   height: "100%",
@@ -131,7 +132,7 @@ const IndexPage = () => {
                   fontWeight={"bold"}
                   textAlign={"center"}
                 >
-                  <i>About Gracie Barra Studio City</i>
+                  About Gracie Barra Studio City
                 </Typography>
                 <Box
                   sx={{
@@ -190,7 +191,7 @@ const IndexPage = () => {
                   fontWeight={"bold"}
                   textAlign={"center"}
                 >
-                  <i>Expert Instruction & Mentorship </i>
+                  Expert Instruction & Mentorship
                 </Typography>
                 <Box
                   sx={{
@@ -240,6 +241,7 @@ const IndexPage = () => {
               display={{ xs: "none", md: "block" }}
             >
               <img
+                alt="Jiu Jitsu Teacher"
                 src={fabioTeachingPhoto}
                 style={{
                   height: "100%",
