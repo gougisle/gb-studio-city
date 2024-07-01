@@ -9,12 +9,14 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormLabel from "@mui/material/FormLabel";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import CircularProgress from "@mui/material/CircularProgress";
 import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
 import AlternateEmailRoundedIcon from "@mui/icons-material/AlternateEmailRounded";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import SectionTitle from "../components/sectionTitle";
 import { publicInfo } from "../utils/publicContent";
-// import { Alert } from "@mui/material";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 
 const Contact = () => {
   const [formValues, setFormValues] = useState({
@@ -25,7 +27,7 @@ const Contact = () => {
     class: "adult",
   });
 
-  //const [alert, setAlert] = useState("");
+  const [formLoading, setFormLoading] = useState(false);
 
   const handleFormValueChange = (e) => {
     console.log(e.target.name);
@@ -41,9 +43,9 @@ const Contact = () => {
 
   const sendFormValues = async (e) => {
     e.preventDefault();
+    setFormLoading(true);
 
-    const url =
-      "https://api.sheety.co/cbd54dcc65404cab9c3e60d3c4772f07/gracieLeads/sheet1";
+    const url = process.env.REACT_APP_SHEETY_API_URI;
     let body = {
       sheet1: {
         ...formValues,
@@ -54,18 +56,31 @@ const Contact = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        console.log("API response: ", response);
+        handleFeedback(response);
+        return response.json();
+      })
       .then((json) => {
-        // Do something with object
-        console.log(json.signUp);
+        console.log("JSON: ", json);
+        setFormLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
       });
   };
 
-  //const onAlertChange = () => {};
+  const handleFeedback = (requestRes) => {
+    if (requestRes.status === 200) {
+      toastr.success("We will get in touch with you soon.", "Message Sent!");
+    } else {
+      toastr.error("Something when wrong! Please try again later", "Oops...");
+    }
+  };
 
   return (
     <Layout>
-      <Box mb={5} mx={{ xs: 3, md: 15 }}>
+      <Box my={5} mx={{ xs: 3, md: 15 }}>
         <SectionTitle title="Contact Info" />
         <Box
           sx={{
@@ -166,7 +181,7 @@ const Contact = () => {
         </Box>
 
         {/* CONTACT FORM */}
-        {/* <Alert severity="success">This is a success Alert.</Alert> */}
+
         <SectionTitle title="Connect With Us" />
         <Box
           onSubmit={sendFormValues}
@@ -198,6 +213,7 @@ const Contact = () => {
               name="email"
               variant="outlined"
               label="Email"
+              type="email"
               value={formValues.email}
               onChange={handleFormValueChange}
             />
@@ -205,24 +221,28 @@ const Contact = () => {
           <FormControl>
             {" "}
             <TextField
+              required
               id="phone"
               name="phone"
               variant="outlined"
               label="Phone"
               value={formValues.phone}
               onChange={handleFormValueChange}
+              inputProps={{ minLength: 7 }}
             />
           </FormControl>
           <FormControl>
             <TextField
+              required
               multiline
-              rows={4}
+              rows={3}
               id="message"
               name="message"
               variant="outlined"
               label="Message"
               value={formValues.message}
               onChange={handleFormValueChange}
+              inputProps={{ maxLength: 350 }}
             />
           </FormControl>
           <FormControl onChange={handleFormValueChange}>
@@ -255,8 +275,13 @@ const Contact = () => {
             </RadioGroup>
           </FormControl>
 
-          <Button type="submit" variant="contained" color="error">
-            Send Message
+          <Button
+            type="submit"
+            variant="contained"
+            color="error"
+            disabled={formLoading}
+          >
+            {formLoading ? <CircularProgress /> : "Send Message"}
           </Button>
         </Box>
       </Box>
@@ -266,4 +291,4 @@ const Contact = () => {
 
 export default Contact;
 
-export const Head = () => <title>Contact Page</title>;
+export const Head = () => <title>GB | Studio City</title>;
