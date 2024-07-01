@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "./navbar";
 import Footer from "./footer";
 import CssBaseline from "@mui/material/CssBaseline";
-import { Grid } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import { defaultGrey } from "../utils/siteThemeColors";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
