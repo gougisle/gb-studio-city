@@ -16,14 +16,6 @@ const About = () => {
   return (
     <Layout>
       <Box mb={5} mx={{ xs: 3, md: 15 }}>
-        {/* <Box
-        // sx={{
-        //   display: "flex",
-        //   flexDirection: "column",
-        //   justifyContent: "center",
-        //   alignItems: "center",
-        // }}
-        > */}
         <SectionTitle title="Meet the Team" />
         <Box>
           <Grid container spacing={2}>
@@ -87,19 +79,8 @@ const About = () => {
               </Box>
             </Grid>
           </Grid>
-          {/* {teamMembers.map((member) => {
-              return (
-                <TeamMemberCard
-                  name={member.name}
-                  role={member.role}
-                  description={member.description}
-                  image={member.image}
-                ></TeamMemberCard>
-              );
-            })} */}
         </Box>
       </Box>
-      {/* </Box> */}
     </Layout>
   );
 };
