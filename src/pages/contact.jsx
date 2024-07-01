@@ -45,7 +45,8 @@ const Contact = () => {
     e.preventDefault();
     setFormLoading(true);
 
-    const url = process.env.REACT_APP_SHEETY_API_URI;
+    const url =
+      "https://api.sheety.co/cbd54dcc65404cab9c3e60d3c4772f07/gracieLeads/sheet1";
     let body = {
       sheet1: {
         ...formValues,
