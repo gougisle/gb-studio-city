@@ -1,11 +1,16 @@
 import React from "react";
 import { Box, Typography, Container } from "@mui/material";
 import FooterTitle from "./footerTitle";
-import logo from "../images/icon.png";
+import GracieBarraLogo from "../images/Gracie_Barra_Logo.png";
 import { gracieBlue } from "../utils/siteThemeColors";
 import { publicInfo } from "../utils/publicContent";
+import ClickableEmailLink from "./clickableEmailLink";
+import { navigate } from "gatsby";
 
 const Footer = () => {
+  const navToHome = () => {
+    navigate("/");
+  };
   return (
     <Container maxWidth={false} disableGutters>
       <Box
@@ -25,14 +30,14 @@ const Footer = () => {
         {/* FOOTER 1 - LOGO */}
         <Box
           sx={{
-            //width: 200,
             display: "flex",
             justifyContent: "center",
           }}
+          onClick={navToHome}
         >
           <img
-            style={{ height: 125, width: 125 }}
-            src={logo}
+            style={{ height: 150, width: 150, cursor: "pointer" }}
+            src={GracieBarraLogo}
             alt="Gracie Barra Logo"
           />
         </Box>
@@ -56,7 +61,7 @@ const Footer = () => {
           <FooterTitle title={"CONTACT US"} />
           <p>
             <Typography variant="body1" className="footer-link">
-              <i>{publicInfo.email}</i>
+              <ClickableEmailLink></ClickableEmailLink>
             </Typography>
           </p>
           <p>
@@ -76,17 +81,29 @@ const Footer = () => {
           </p>
           <p>
             <Typography variant="body1" className="footer-link">
-              <i>Twitter</i>
+              <i>Twitter</i>{" "}
             </Typography>
           </p>
           <p>
             <Typography variant="body1" className="footer-link">
-              <i>Instagram</i>
+              <a
+                href="https://www.instagram.com/gbstudiocity/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i>Instagram</i>
+              </a>
             </Typography>
           </p>
           <p>
             <Typography variant="body1" className="footer-link">
-              <i>Google</i>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={publicInfo.googleMapsUrl}
+              >
+                <i>Google</i>
+              </a>{" "}
             </Typography>
           </p>
         </Box>

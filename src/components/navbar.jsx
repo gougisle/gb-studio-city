@@ -10,8 +10,8 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import GracieBarraLogo from "../images/Gracie_Barra_Logo.png";
 import { navigate } from "gatsby";
 import { darkGrey } from "../utils/siteThemeColors";
 
@@ -39,11 +39,15 @@ const NavBar = () => {
     "&:hover": { color: darkGrey },
   };
 
-  const drawer = (
+  const mobileViewDrawer = (
     <Box onClick={toggleNavDrawer} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }} onClick={navToHome}>
-        GB Studio City
-      </Typography>
+      {" "}
+      <img
+        src={GracieBarraLogo}
+        alt="Gracie Barra Logo"
+        style={{ width: "50%", padding: 2 }}
+        onClick={navToHome}
+      ></img>
       <Divider />
       <List>
         {navItems.map((item) => (
@@ -70,6 +74,7 @@ const NavBar = () => {
         <Toolbar
           sx={{
             backgroundColor: "#317dc3",
+            paddingY: 1,
           }}
           className="tester-style"
         >
@@ -82,10 +87,9 @@ const NavBar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
+          <Box
             sx={{
+              width: "6rem",
               marginRight: 3,
               display: { xs: "none", sm: "flex" },
               cursor: "pointer",
@@ -94,14 +98,18 @@ const NavBar = () => {
               navigate("/");
             }}
           >
-            GB Studio City
-          </Typography>
+            <img
+              src={GracieBarraLogo}
+              alt="Gracie Barra Logo"
+              style={{ width: "100%" }}
+            ></img>
+          </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}>
             <Box>
               {navItems.map((item) => (
                 <Button
+                  size="large"
                   key={item}
-                  //className="navbar-link-button"
                   onClick={() => navToPage(item)}
                   sx={navButtonLinkStyle}
                 >
@@ -128,7 +136,7 @@ const NavBar = () => {
             },
           }}
         >
-          {drawer}
+          {mobileViewDrawer}
         </Drawer>
       </nav>
     </>
