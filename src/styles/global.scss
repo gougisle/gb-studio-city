@@ -7,7 +7,11 @@ $white: #fafafa;
 a {
   cursor: pointer;
   text-decoration: none;
-  &:visited {
+  color: inherit;
+  &:visited &a:hover,
+  &a:focus,
+  &a:active {
+    text-decoration: none;
     color: inherit;
   }
 }
@@ -18,7 +22,6 @@ a {
   transition: 300ms all;
   &:hover {
     color: $gracieBlue;
-    //transform: translateY(-3px);
   }
 }
 

@@ -15,8 +15,34 @@ import AlternateEmailRoundedIcon from "@mui/icons-material/AlternateEmailRounded
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import SectionTitle from "../components/sectionTitle";
 import { publicInfo } from "../utils/publicContent";
+import ClickableEmailLink from "../components/clickableEmailLink";
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
+
+toastr.options = {
+  closeButton: false,
+  debug: false,
+  newestOnTop: false,
+  progressBar: false,
+  positionClass: "toast-top-center",
+  preventDuplicates: false,
+  onclick: null,
+  showDuration: "300",
+  hideDuration: "1000",
+  timeOut: "5000",
+  extendedTimeOut: "1000",
+  showEasing: "swing",
+  hideEasing: "linear",
+  showMethod: "fadeIn",
+  hideMethod: "fadeOut",
+};
+const DEFAULT_FORM = {
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+  class: "",
+};
 
 const Contact = () => {
   const [formValues, setFormValues] = useState({
@@ -24,7 +50,7 @@ const Contact = () => {
     email: "",
     phone: "",
     message: "",
-    class: "adult",
+    class: "",
   });
 
   const [formLoading, setFormLoading] = useState(false);
@@ -45,8 +71,7 @@ const Contact = () => {
     e.preventDefault();
     setFormLoading(true);
 
-    const url =
-      "https://api.sheety.co/cbd54dcc65404cab9c3e60d3c4772f07/gracieLeads/sheet1";
+    const url = process.env.GATSBY_SHEETY_API_KEY;
     let body = {
       sheet1: {
         ...formValues,
@@ -74,6 +99,7 @@ const Contact = () => {
   const handleFeedback = (requestRes) => {
     if (requestRes.status === 200) {
       toastr.success("We will get in touch with you soon.", "Message Sent!");
+      setFormValues(DEFAULT_FORM);
     } else {
       toastr.error("Something when wrong! Please try again later", "Oops...");
     }
@@ -133,7 +159,7 @@ const Contact = () => {
                 display={"inline"}
                 className="contact-link"
               >
-                <i>{publicInfo.phone}</i>
+                {publicInfo.phone}
               </Typography>
             </Box>
             <Box
@@ -151,7 +177,7 @@ const Contact = () => {
                 display={"inline"}
                 className="contact-link"
               >
-                <i>{publicInfo.email}</i>
+                <ClickableEmailLink></ClickableEmailLink>
               </Typography>
             </Box>{" "}
             <Box
@@ -174,7 +200,7 @@ const Contact = () => {
                   rel="noreferrer"
                   href={publicInfo.googleMapsUrl}
                 >
-                  <i>{publicInfo.address}</i>
+                  {publicInfo.address}
                 </a>
               </Typography>
             </Box>
@@ -252,13 +278,11 @@ const Contact = () => {
             </FormLabel>
             <RadioGroup
               aria-labelledby="radio-buttons-group-label"
-              defaultValue="adult"
               name="class"
               row
             >
               {" "}
               <FormControlLabel
-                defaultChecked
                 value="adults"
                 control={<Radio />}
                 label="Adults"
