@@ -17,5 +17,3 @@ export {
   lightGrey,
   offWhite,
 };
-
-///// Font -- Titillium Web

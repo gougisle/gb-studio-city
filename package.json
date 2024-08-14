@@ -2,6 +2,7 @@
   "name": "gb-studio-city",
   "version": "1.0.0",
   "private": true,
+  "homepage": "http://gbstudiocity.com/",
   "description": "gb-studio-city",
   "keywords": [
     "gatsby"
@@ -20,6 +21,7 @@
     "@mui/material": "^5.15.19",
     "gatsby": "^5.13.5",
     "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-google-tagmanager": "^5.13.1",
     "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-sass": "^6.13.1",
     "gatsby-plugin-sharp": "^5.13.1",
