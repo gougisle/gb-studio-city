@@ -116,7 +116,7 @@ const Contact = () => {
             justifyContent: "center",
             alignItems: "center",
             gap: 4,
-            marginBottom: 4,
+            marginBottom: 5,
           }}
         >
           <Box
@@ -218,6 +218,8 @@ const Contact = () => {
             flexDirection: "column",
             width: "100%",
             gap: 4,
+
+            padding: 3,
           }}
         >
           <FormControl>
@@ -316,4 +318,4 @@ const Contact = () => {
 
 export default Contact;
 
-export const Head = () => <title>GB | Studio City</title>;
+export const Head = () => <title>GB | Contact</title>;

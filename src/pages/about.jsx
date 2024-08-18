@@ -87,4 +87,4 @@ const About = () => {
 
 export default About;
 
-export const Head = () => <title>GB Studio City</title>;
+export const Head = () => <title>GB | About</title>;

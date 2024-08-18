@@ -5,9 +5,10 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import landingImage from "../images/pexels-rdne-8612017.jpg";
-import aboutImage from "../images/pexels-rdne-7045743.jpg";
+import landingImage from "../images/adult_match_handshake_kneeling.jpg";
+import aboutImage from "../images/children_sparring_laughs.jpg";
 import fabioTeachingPhoto from "../images/fabio-teaching-1.jpeg";
+
 import { navigate } from "gatsby";
 
 const IndexPage = () => {
@@ -259,4 +260,4 @@ const IndexPage = () => {
 
 export default IndexPage;
 
-export const Head = () => <title>GB | Studio City</title>;
+export const Head = () => <title>GB | Home</title>;

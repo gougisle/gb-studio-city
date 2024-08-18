@@ -16,4 +16,4 @@ const SchedulePage = () => {
 
 export default SchedulePage;
 
-export const Head = () => <title>GB | Studio City</title>;
+export const Head = () => <title>GB | Schedule</title>;
