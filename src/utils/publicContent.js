@@ -13,8 +13,10 @@ const publicInfo = {
   email: "info@gbstudiocity.com",
   phone: "(818) 867-8913",
   address: "12323 Ventura Blvd, Studio City, CA 91604",
+  instagramUrl: "https://www.instagram.com/gbstudiocity/",
+  facebookUrl: "https://www.facebook.com/profile.php?id=61563431676910",
   googleMapsUrl:
-    "https://www.google.com/maps/place/12323+Ventura+Blvd,+Studio+City,+CA+91604/@34.1432169,-118.4017235,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2bdfafdfeab6f:0x51a977c6556326e3!8m2!3d34.1432169!4d-118.4017235!16s%2Fg%2F11c3q44k6l?entry=ttu",
+    "https://www.google.com/maps/place/Gracie+Barra+Studio+City/@34.1432169,-118.4017235,17z/data=!4m15!1m8!3m7!1s0x80c2bdfafdfeab6f:0x51a977c6556326e3!2s12323+Ventura+Blvd,+Studio+City,+CA+91604!3b1!8m2!3d34.1432169!4d-118.4017235!16s%2Fg%2F11c3q44k6l!3m5!1s0x80c2bdac89ee92d1:0x6afa9601260e0f3c!8m2!3d34.1432169!4d-118.4017235!16s%2Fg%2F11lf2csb8_?entry=ttu&g_ep=EgoyMDI0MDgyNi4wIKXMDSoASAFQAw%3D%3D",
 };
 
 export { teamMembers, publicInfo };

@@ -71,9 +71,9 @@ const Contact = () => {
     e.preventDefault();
     setFormLoading(true);
 
-    const url = process.env.GATSBY_SHEETY_API_KEY;
+    const url = `${process.env.GATSBY_SHEETY_API_URL}/${process.env.GATSBY_SHEETY_API_KEY}/gracieLeads/contacts`;
     let body = {
-      sheet1: {
+      contact: {
         ...formValues,
       },
     };

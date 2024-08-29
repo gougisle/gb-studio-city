@@ -30,9 +30,7 @@ const About = () => {
               <Box
                 sx={{
                   display: "flex",
-
                   flexDirection: "column",
-
                   justifyContent: "center",
                 }}
               >
