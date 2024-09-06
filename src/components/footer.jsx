@@ -76,10 +76,7 @@ const Footer = () => {
           <FooterTitle title={"SOCIALS"} />
           <p>
             <Typography variant="body1" className="footer-link">
-              <a href={publicInfo.facebookUrl} target="_blank" rel="noreferrer">
-                {" "}
-                <i>Facebook</i>
-              </a>
+              <i>Facebook</i>
             </Typography>
           </p>
           <p>
@@ -90,7 +87,7 @@ const Footer = () => {
           <p>
             <Typography variant="body1" className="footer-link">
               <a
-                href={publicInfo.instagramUrl}
+                href="https://www.instagram.com/gbstudiocity/"
                 target="_blank"
                 rel="noreferrer"
               >
