@@ -157,13 +157,11 @@ const Contact = () => {
             </Box>
           </Box>
         </Box>
-
-        {/* CONTACT FORM */}
         <SectionTitle title="Connect With Us" />
         <Box
           style={{
             display: "flex",
-            maxWidth: "500px",
+            maxWidth: "800px",
             height: "100%",
             margin: "auto",
           }}

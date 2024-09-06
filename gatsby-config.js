@@ -7,10 +7,6 @@ module.exports = {
     siteUrl: `https://gbstudiocity.com`,
   },
   plugins: [
-    `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
-    `gatsby-source-filesystem`,
     {
       resolve: "gatsby-plugin-manifest",
       options: {
@@ -33,23 +29,12 @@ module.exports = {
       },
     },
     "gatsby-plugin-sass",
-    "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [`Titillium Web`],
         display: "swap",
       },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "images",
-        path: "./src/images/",
-      },
-      __key: "images",
     },
   ],
 };
