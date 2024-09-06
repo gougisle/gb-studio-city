@@ -1,7 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Layout from "../components/layout";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import FormControl from "@mui/material/FormControl";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormLabel from "@mui/material/FormLabel";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import CircularProgress from "@mui/material/CircularProgress";
 import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
 import AlternateEmailRoundedIcon from "@mui/icons-material/AlternateEmailRounded";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
@@ -28,34 +36,74 @@ toastr.options = {
   showMethod: "fadeIn",
   hideMethod: "fadeOut",
 };
+const DEFAULT_FORM = {
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+  class: "",
+};
 
 const Contact = () => {
-  const iframeRef = useRef(null);
+  const [formValues, setFormValues] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+    class: "",
+  });
 
-  // State to track the height of the iframe
-  const [iframeHeight] = useState(340); // default height
+  const [formLoading, setFormLoading] = useState(false);
 
-  // Function to adjust iframe height
-  const adjustIFrameHeight = (height) => {
-    if (iframeRef.current) {
-      iframeRef.current.style.height = `${height + 30}px`;
-    }
+  const handleFormValueChange = (e) => {
+    console.log(e.target.name);
+    const input = e.target.value;
+    const inputName = e.target.name;
+
+    setFormValues((prev) => {
+      let newState = { ...prev };
+      newState[inputName] = input;
+      return newState;
+    });
   };
 
-  useEffect(() => {
-    // Event listener for postMessage
-    const handleMessage = (event) => {
-      console.log(event.data);
-      if (event.data.action === "gbMembersAdjustIFrame") {
-        adjustIFrameHeight(event.data.height);
-      }
+  const sendFormValues = async (e) => {
+    e.preventDefault();
+    setFormLoading(true);
+
+    const url = process.env.GATSBY_SHEETY_API_KEY;
+    let body = {
+      sheet1: {
+        ...formValues,
+      },
     };
-    window.addEventListener("message", handleMessage);
-    // Cleanup the event listener when component unmounts
-    return () => {
-      window.removeEventListener("message", handleMessage);
-    };
-  }, []);
+    await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    })
+      .then((response) => {
+        console.log("API response: ", response);
+        handleFeedback(response);
+        return response.json();
+      })
+      .then((json) => {
+        console.log("JSON: ", json);
+        setFormLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const handleFeedback = (requestRes) => {
+    if (requestRes.status === 200) {
+      toastr.success("We will get in touch with you soon.", "Message Sent!");
+      setFormValues(DEFAULT_FORM);
+    } else {
+      toastr.error("Something when wrong! Please try again later", "Oops...");
+    }
+  };
 
   return (
     <Layout>
@@ -81,6 +129,7 @@ const Contact = () => {
               width="100%"
               height="400"
               frameborder="0"
+              scrolling="no"
               marginheight="0"
               marginwidth="0"
               src="https://maps.google.com/maps?width=500&amp;height=400&amp;hl=en&amp;q=12323%20Ventura%20Blvd.%20Studio%20City%20CA,%2091604+(Gracie%20Barra%20Studio%20City)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
@@ -157,25 +206,110 @@ const Contact = () => {
             </Box>
           </Box>
         </Box>
+
+        {/* CONTACT FORM */}
+
         <SectionTitle title="Connect With Us" />
         <Box
-          style={{
+          onSubmit={sendFormValues}
+          component={"form"}
+          sx={{
             display: "flex",
-            maxWidth: "800px",
-            height: "100%",
-            margin: "auto",
+            flexDirection: "column",
+            width: "100%",
+            gap: 4,
+
+            padding: 3,
           }}
-          className="gb-widget-wraper"
         >
-          <iframe
-            title="GB Studio City Widget"
-            id="gbbookatrial"
-            ref={iframeRef}
-            src="https://services.gbmembers.net/gbcalendar-1.0/calendar.htm?space=studiocity"
-            style={{ width: "100%" }}
-            height={iframeHeight}
-            allowFullScreen
-          />
+          <FormControl>
+            <TextField
+              required
+              id="name"
+              name="name"
+              variant="outlined"
+              label="Name"
+              size="normal"
+              value={formValues.name}
+              onChange={handleFormValueChange}
+            />
+          </FormControl>
+          <FormControl>
+            {" "}
+            <TextField
+              required
+              id="email"
+              name="email"
+              variant="outlined"
+              label="Email"
+              type="email"
+              value={formValues.email}
+              onChange={handleFormValueChange}
+            />
+          </FormControl>
+          <FormControl>
+            {" "}
+            <TextField
+              required
+              id="phone"
+              name="phone"
+              variant="outlined"
+              label="Phone"
+              value={formValues.phone}
+              onChange={handleFormValueChange}
+              inputProps={{ minLength: 7 }}
+            />
+          </FormControl>
+          <FormControl>
+            <TextField
+              required
+              multiline
+              rows={3}
+              id="message"
+              name="message"
+              variant="outlined"
+              label="Message"
+              value={formValues.message}
+              onChange={handleFormValueChange}
+              inputProps={{ maxLength: 350 }}
+            />
+          </FormControl>
+          <FormControl onChange={handleFormValueChange}>
+            <FormLabel id="radio-buttons-group-label">
+              What class are you interested in?
+            </FormLabel>
+            <RadioGroup
+              aria-labelledby="radio-buttons-group-label"
+              name="class"
+              row
+            >
+              {" "}
+              <FormControlLabel
+                value="adults"
+                control={<Radio />}
+                label="Adults"
+              />
+              <FormControlLabel
+                value="children"
+                control={<Radio />}
+                label="Children"
+              />
+              <FormControlLabel
+                value="women"
+                control={<Radio />}
+                label="Women"
+              />
+            </RadioGroup>
+          </FormControl>
+
+          <Button
+            type="submit"
+            variant="contained"
+            color="error"
+            disabled={formLoading}
+          >
+            {formLoading ? <CircularProgress /> : "Send Message"}
+          </Button>
         </Box>
       </Box>
     </Layout>
