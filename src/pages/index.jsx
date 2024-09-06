@@ -14,6 +14,7 @@ import { navigate } from "gatsby";
 
 const IndexPage = () => {
   const iframeRef = useRef(null);
+  const widgetContainerRef = useRef(null);
   const [iframeHeight] = useState(340);
 
   const navToContact = () => {
@@ -30,10 +31,14 @@ const IndexPage = () => {
     }
   };
   const scrollToBottom = () => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight, // Scroll to the bottom
-      behavior: "smooth", // Smooth scrolling animation
+    widgetContainerRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
     });
+    // window.scrollTo({
+    //   top: document.documentElement.scrollHeight, // Scroll to the bottom
+    //   behavior: "smooth", // Smooth scrolling animation
+    // });
   };
 
   useEffect(() => {
@@ -283,7 +288,7 @@ const IndexPage = () => {
             </Grid>
           </Grid>
         </Box>
-        <Box pb={4} pt={1}>
+        <Box pb={4} pt={1} ref={widgetContainerRef}>
           <SectionTitle title="Join a Free Trial Class Today!" />
           <Box
             style={{
