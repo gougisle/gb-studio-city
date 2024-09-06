@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Layout from "../components/layout";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -8,10 +8,14 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import landingImage from "../images/adult_match_handshake_kneeling.jpg";
 import aboutImage from "../images/children_sparring_laughs.jpg";
 import fabioTeachingPhoto from "../images/fabio-teaching-1.jpeg";
-
+import SectionTitle from "../components/sectionTitle";
+import { gracieRed } from "../utils/siteThemeColors";
 import { navigate } from "gatsby";
 
 const IndexPage = () => {
+  const iframeRef = useRef(null);
+  const [iframeHeight] = useState(340);
+
   const navToContact = () => {
     navigate("/contact");
   };
@@ -20,6 +24,32 @@ const IndexPage = () => {
     navigate("/schedule");
   };
 
+  const adjustIFrameHeight = (height) => {
+    if (iframeRef.current) {
+      iframeRef.current.style.height = `${height + 30}px`;
+    }
+  };
+  const scrollToBottom = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight, // Scroll to the bottom
+      behavior: "smooth", // Smooth scrolling animation
+    });
+  };
+
+  useEffect(() => {
+    // Event listener for postMessage
+    const handleMessage = (event) => {
+      console.log(event.data);
+      if (event.data.action === "gbMembersAdjustIFrame") {
+        adjustIFrameHeight(event.data.height);
+      }
+    };
+    window.addEventListener("message", handleMessage);
+    // Cleanup the event listener when component unmounts
+    return () => {
+      window.removeEventListener("message", handleMessage);
+    };
+  }, []);
   return (
     <main>
       <Layout>
@@ -52,7 +82,7 @@ const IndexPage = () => {
               variant="contained"
               color="error"
               sx={{ paddingY: 2, paddingX: 5, fontSize: "larger" }}
-              onClick={navToContact}
+              onClick={scrollToBottom}
             >
               {" "}
               Sign Up for a free Class
@@ -159,7 +189,7 @@ const IndexPage = () => {
                     variant="outlined"
                     onClick={navToContact}
                   >
-                    Sign Up for Class <ArrowForwardIcon />
+                    Connect With Us <ArrowForwardIcon />
                   </Button>{" "}
                 </Box>
               </Box>
@@ -252,6 +282,31 @@ const IndexPage = () => {
               />
             </Grid>
           </Grid>
+        </Box>
+        <Box pb={4} pt={1}>
+          <SectionTitle title="Join a Free Trial Class Today!" />
+          <Box
+            style={{
+              display: "flex",
+              maxWidth: "800px",
+              height: "100%",
+              margin: "auto",
+            }}
+            className="gb-widget-wraper"
+          >
+            <iframe
+              title="GB Studio City Widget"
+              id="gbbookatrial"
+              ref={iframeRef}
+              src="https://services.gbmembers.net/gbcalendar-1.0/calendar.htm?space=studiocity"
+              style={{
+                width: "100%",
+                border: `2px solid ${gracieRed}`,
+              }}
+              height={iframeHeight}
+              allowFullScreen
+            />
+          </Box>
         </Box>
       </Layout>
     </main>

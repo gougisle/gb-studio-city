@@ -1,20 +1,13 @@
 import React, { useState } from "react";
 import Layout from "../components/layout";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import FormControl from "@mui/material/FormControl";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormLabel from "@mui/material/FormLabel";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import CircularProgress from "@mui/material/CircularProgress";
 import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
 import AlternateEmailRoundedIcon from "@mui/icons-material/AlternateEmailRounded";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import SectionTitle from "../components/sectionTitle";
 import { publicInfo } from "../utils/publicContent";
+import { gracieRed } from "../utils/siteThemeColors";
 import ClickableEmailLink from "../components/clickableEmailLink";
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
@@ -108,7 +101,7 @@ const Contact = () => {
   return (
     <Layout>
       <Box my={5} mx={{ xs: 3, md: 15 }}>
-        <SectionTitle title="Contact Info" />
+        <SectionTitle title="Contact Us" />
         <Box
           sx={{
             display: "flex",
@@ -206,10 +199,7 @@ const Contact = () => {
             </Box>
           </Box>
         </Box>
-
-        {/* CONTACT FORM */}
-
-        <SectionTitle title="Connect With Us" />
+        <SectionTitle title="Join a Free Trial Class Today!" />
         <Box
           onSubmit={sendFormValues}
           component={"form"}
@@ -222,94 +212,18 @@ const Contact = () => {
             padding: 3,
           }}
         >
-          <FormControl>
-            <TextField
-              required
-              id="name"
-              name="name"
-              variant="outlined"
-              label="Name"
-              size="normal"
-              value={formValues.name}
-              onChange={handleFormValueChange}
-            />
-          </FormControl>
-          <FormControl>
-            {" "}
-            <TextField
-              required
-              id="email"
-              name="email"
-              variant="outlined"
-              label="Email"
-              type="email"
-              value={formValues.email}
-              onChange={handleFormValueChange}
-            />
-          </FormControl>
-          <FormControl>
-            {" "}
-            <TextField
-              required
-              id="phone"
-              name="phone"
-              variant="outlined"
-              label="Phone"
-              value={formValues.phone}
-              onChange={handleFormValueChange}
-              inputProps={{ minLength: 7 }}
-            />
-          </FormControl>
-          <FormControl>
-            <TextField
-              required
-              multiline
-              rows={3}
-              id="message"
-              name="message"
-              variant="outlined"
-              label="Message"
-              value={formValues.message}
-              onChange={handleFormValueChange}
-              inputProps={{ maxLength: 350 }}
-            />
-          </FormControl>
-          <FormControl onChange={handleFormValueChange}>
-            <FormLabel id="radio-buttons-group-label">
-              What class are you interested in?
-            </FormLabel>
-            <RadioGroup
-              aria-labelledby="radio-buttons-group-label"
-              name="class"
-              row
-            >
-              {" "}
-              <FormControlLabel
-                value="adults"
-                control={<Radio />}
-                label="Adults"
-              />
-              <FormControlLabel
-                value="children"
-                control={<Radio />}
-                label="Children"
-              />
-              <FormControlLabel
-                value="women"
-                control={<Radio />}
-                label="Women"
-              />
-            </RadioGroup>
-          </FormControl>
-
-          <Button
-            type="submit"
-            variant="contained"
-            color="error"
-            disabled={formLoading}
-          >
-            {formLoading ? <CircularProgress /> : "Send Message"}
-          </Button>
+          <iframe
+            title="GB Studio City Widget"
+            id="gbbookatrial"
+            ref={iframeRef}
+            src="https://services.gbmembers.net/gbcalendar-1.0/calendar.htm?space=studiocity"
+            style={{
+              width: "100%",
+              border: `2px solid ${gracieRed}`,
+            }}
+            height={iframeHeight}
+            allowFullScreen
+          />
         </Box>
       </Box>
     </Layout>
