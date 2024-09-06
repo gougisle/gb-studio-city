@@ -7,6 +7,7 @@ import AlternateEmailRoundedIcon from "@mui/icons-material/AlternateEmailRounded
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import SectionTitle from "../components/sectionTitle";
 import { publicInfo } from "../utils/publicContent";
+import { gracieRed } from "../utils/siteThemeColors";
 import ClickableEmailLink from "../components/clickableEmailLink";
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
@@ -60,7 +61,7 @@ const Contact = () => {
   return (
     <Layout>
       <Box my={5} mx={{ xs: 3, md: 15 }}>
-        <SectionTitle title="Contact Info" />
+        <SectionTitle title="Contact Us" />
         <Box
           sx={{
             display: "flex",
@@ -157,7 +158,7 @@ const Contact = () => {
             </Box>
           </Box>
         </Box>
-        <SectionTitle title="Connect With Us" />
+        <SectionTitle title="Join a Free Trial Class Today!" />
         <Box
           style={{
             display: "flex",
@@ -172,7 +173,10 @@ const Contact = () => {
             id="gbbookatrial"
             ref={iframeRef}
             src="https://services.gbmembers.net/gbcalendar-1.0/calendar.htm?space=studiocity"
-            style={{ width: "100%" }}
+            style={{
+              width: "100%",
+              border: `2px solid ${gracieRed}`,
+            }}
             height={iframeHeight}
             allowFullScreen
           />
