@@ -1,11 +1,11 @@
 import React from "react";
 import { Box, Typography, Container } from "@mui/material";
 import FooterTitle from "./footerTitle";
-import GracieBarraLogo from "../images/Gracie_Barra_Logo.png";
 import { gracieBlue } from "../utils/siteThemeColors";
 import { publicInfo } from "../utils/publicContent";
 import ClickableEmailLink from "./clickableEmailLink";
 import { navigate } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 
 const Footer = () => {
   const navToHome = () => {
@@ -35,10 +35,11 @@ const Footer = () => {
           }}
           onClick={navToHome}
         >
-          <img
-            style={{ height: 150, width: 150, cursor: "pointer" }}
-            src={GracieBarraLogo}
+          <StaticImage
+            src="../images/Gracie_Barra_Logo.png"
             alt="Gracie Barra Logo"
+            placeholder="blurred"
+            style={{ height: 150, width: 150, cursor: "pointer" }}
           />
         </Box>
         {/* FOOTER 2 - LOCATION */}

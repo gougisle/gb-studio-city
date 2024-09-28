@@ -6,11 +6,10 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import landingImage from "../images/adult_match_handshake_kneeling.jpg";
-import aboutImage from "../images/children_sparring_laughs.jpg";
-import fabioTeachingPhoto from "../images/fabio-teaching-1.jpeg";
 import SectionTitle from "../components/sectionTitle";
 import { gracieRed } from "../utils/siteThemeColors";
 import { navigate } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 
 const IndexPage = () => {
   const iframeRef = useRef(null);
@@ -136,13 +135,15 @@ const IndexPage = () => {
               lg={6}
               display={{ xs: "none", md: "block" }}
             >
-              <img
-                alt="Jiu-Jitsu Student"
-                src={aboutImage}
+              <StaticImage
+                src="../images/children_sparring_laughs.jpg"
+                alt="Gracie Barra Student"
+                placeholder="blurred"
                 style={{
-                  height: "100%",
+                  height: "40rem",
                   width: "100%",
                   boxShadow: "3px 3px 3px grey",
+                  borderRadius: "10px",
                 }}
               />
             </Grid>
@@ -271,13 +272,15 @@ const IndexPage = () => {
               lg={6}
               display={{ xs: "none", md: "block" }}
             >
-              <img
-                alt="Jiu Jitsu Teacher"
-                src={fabioTeachingPhoto}
+              <StaticImage
+                src="../images/fabio-teaching-1.jpeg"
+                alt="Gracie Barra instructor leading class"
+                placeholder="blurred"
                 style={{
-                  height: "100%",
+                  height: "40rem",
                   width: "100%",
                   boxShadow: "3px 3px 3px grey",
+                  borderRadius: "10px",
                 }}
               />
             </Grid>

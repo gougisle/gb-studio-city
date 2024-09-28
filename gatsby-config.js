@@ -7,6 +7,10 @@ module.exports = {
     siteUrl: `https://gbstudiocity.com`,
   },
   plugins: [
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    //`gatsby-source-filesystem`,
     {
       resolve: "gatsby-plugin-manifest",
       options: {

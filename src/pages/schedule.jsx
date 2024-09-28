@@ -4,8 +4,8 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import DownloadIcon from "@mui/icons-material/Download";
 import SectionTitle from "../components/sectionTitle";
-import scheduleImage from "../images/Schedule_GBSC.jpg";
 import schedulePdf from "../downloads/Schedule_GBSC.pdf";
+import { StaticImage } from "gatsby-plugin-image";
 import "../styles/comingsoon.scss";
 
 const SchedulePage = () => {
@@ -36,9 +36,10 @@ const SchedulePage = () => {
               margin: "auto",
             }}
           >
-            <img
-              src={scheduleImage}
+            <StaticImage
+              src="../images/Schedule_GBSC.jpg"
               alt="Weekly Schedule"
+              placeholder="blurred"
               style={{
                 width: "100%",
                 height: "auto",

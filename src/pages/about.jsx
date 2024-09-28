@@ -4,14 +4,9 @@ import Box from "@mui/material/Box";
 import SectionTitle from "../components/sectionTitle";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
-import fabioPhoto from "../images/fabio-blue-gi-medals.jpg";
 import { gracieRed } from "../utils/siteThemeColors";
+import { StaticImage } from "gatsby-plugin-image";
 
-const imageStyles = {
-  width: "100%",
-  boxShadow: "5px 5px 5px grey",
-  borderRadius: "10px",
-};
 const About = () => {
   return (
     <Layout>
@@ -20,11 +15,16 @@ const About = () => {
         <Box>
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
-              <img
-                style={imageStyles}
-                src={fabioPhoto}
+              <StaticImage
+                src="../images/fabio-blue-gi-medals.jpg"
                 alt="Fabio Trindade, Head Instructor at Gracie Barra Studio City"
-              ></img>
+                placeholder="blurred"
+                style={{
+                  width: "100%",
+                  boxShadow: "5px 5px 5px grey",
+                  borderRadius: "10px",
+                }}
+              />
             </Grid>
             <Grid item xs md>
               <Box

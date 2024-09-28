@@ -11,7 +11,7 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
-import GracieBarraLogo from "../images/Gracie_Barra_Logo.png";
+import { StaticImage } from "gatsby-plugin-image";
 import { navigate } from "gatsby";
 import { darkGrey } from "../utils/siteThemeColors";
 
@@ -41,13 +41,15 @@ const NavBar = () => {
 
   const mobileViewDrawer = (
     <Box onClick={toggleNavDrawer} sx={{ textAlign: "center" }}>
-      {" "}
-      <img
-        src={GracieBarraLogo}
-        alt="Gracie Barra Logo"
-        style={{ width: "50%", padding: 2 }}
-        onClick={navToHome}
-      ></img>
+      <Box onClick={navToHome}>
+        <StaticImage
+          src="../images/Gracie_Barra_Logo.png"
+          alt="Gracie Barra Logo"
+          placeholder="blurred"
+          style={{ width: "50%", padding: 2 }}
+        />
+      </Box>
+
       <Divider />
       <List>
         {navItems.map((item) => (
@@ -98,11 +100,13 @@ const NavBar = () => {
               navigate("/");
             }}
           >
-            <img
-              src={GracieBarraLogo}
+            <StaticImage
+              src="../images/Gracie_Barra_Logo.png"
               alt="Gracie Barra Logo"
+              placeholder="blurred"
               style={{ width: "100%" }}
-            ></img>
+              onClick={navToHome}
+            />
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}>
             <Box>
